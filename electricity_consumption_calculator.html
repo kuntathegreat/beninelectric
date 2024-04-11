@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Consumption Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        select,
+        input {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+        select {
+            width: 100%;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #result {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        #company-logo {
+            display: block;
+            margin: 0 auto;
+            width: 200px;
+        }
+    </style>
+</head>
+<body>
+
+    <img src="https://www.thexpressng.com/wp-content/uploads/2018/10/BEDC.png" alt="Utility Company Logo" id="company-logo">
+
+    <h1>Electricity Consumption Calculator</h1>
+
+    <div>
+        <label for="band">Select Band:</label>
+        <select id="band">
+            <option value="20">Band A (20 hours)</option>
+            <option value="16">Band B (16 hours)</option>
+            <option value="12">Band C (12 hours)</option>
+            <option value="8">Band D (8 hours)</option>
+            <option value="4">Band E (4 hours)</option>
+        </select>
+    </div>
+
+    <div>
+        <label for="amps">Number of Amps:</label>
+        <input type="number" id="amps" placeholder="Enter amps">
+    </div>
+
+    <div>
+        <label for="voltage">Voltage:</label>
+        <input type="number" id="voltage" placeholder="Enter voltage">
+    </div>
+
+    <button onclick="calculateConsumption()">Calculate</button>
+
+    <div id="result"></div>
+
+    <script>
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        function calculateConsumption() {
+            var band = document.getElementById('band').value;
+            var amps = parseFloat(document.getElementById('amps').value);
+            var voltage = parseFloat(document.getElementById('voltage').value);
+
+            var hours = parseFloat(band);
+            var consumption;
+            var m_consumption;
+
+            var consumption =  hours * amps * voltage / 1000;
+
+            if (band === '20') {
+                b_consumption = 225 * consumption;
+            } else if (band === '16') {
+                b_consumption = 68.56 * consumption;
+            } else if (band === '12') {
+                b_consumption = 56.91 * consumption;
+            } else if (band === '8') {
+                b_consumption = 41.21 * consumption;
+            } else if (band === '4') {
+                b_consumption = 41.21 * consumption;
+            }
+
+            var weeklyCost = 7 * b_consumption;
+            var monthlyCost = 30 * b_consumption;
+
+            document.getElementById('result').innerHTML = "<p><strong>Electricity Consumption:</strong> " + numberWithCommas(consumption.toFixed(2)) + " Units</p>" +
+                "<p><strong>This translates to:</strong></p>" +
+                "<p><strong>Weekly Cost:</strong> " + numberWithCommas(weeklyCost.toFixed(2)) + " Naira</p>" +
+                "<p><strong>Monthly Cost:</strong> " + numberWithCommas(monthlyCost.toFixed(2)) + " Naira</p>";
+        }
+    </script>
+
+</body>
+</html>
