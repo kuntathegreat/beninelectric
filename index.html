@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meter Name Generator</title>
+    <title>Electricity Utility</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,101 +15,35 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        input {
-            width: calc(100% - 22px);
-            padding: 10px;
-            margin-bottom: 20px;
-            box-sizing: border-box;
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
         }
-        button {
-            width: 100%;
-            padding: 10px;
+        .link {
+            padding: 10px 20px;
+            margin: 10px;
             background-color: #4CAF50;
             color: white;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
+            border-radius: 5px;
             transition: background-color 0.3s ease;
         }
-        button:hover {
+        .link:hover {
             background-color: #45a049;
-        }
-        #possibleNames {
-            margin-top: 20px;
-            padding: 20px;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            display: none;
-        }
-        #possibleMeterNames {
-            font-weight: bold;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .meterName {
-            margin-right: 10px;
-            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
 
-<h1>Meter Name Generator</h1>
+<h1>Electricity Utility</h1>
 
-<div>
-    <label for="meterNumber">Enter Meter Number:</label>
-    <input type="text" id="meterNumber" placeholder="Enter meter number" oninput="showPossibleMeterNames()">
+<div class="container">
+    <a href="metering_solutions.html" class="link">Metering</a>
+    <a href="kct_separator.html" class="link">Kct Separator</a>
+    <a href="electricity_consumption_calculator.html" class="link">Electricity Consumption Calculator</a>
 </div>
-
-<div id="possibleNames">
-    <strong>Meter Name:</strong><br>
-    <div id="possibleMeterNames"></div>
-</div>
-
-<script>
-    function showPossibleMeterNames() {
-        var meterNumber = document.getElementById('meterNumber').value;
-        var possibleMeterNames = document.getElementById('possibleMeterNames');
-        var possibleNamesDiv = document.getElementById('possibleNames');
-        var meterNames = [];
-
-        if (meterNumber.startsWith('0132')) {
-            meterNames.push("ATARIS");
-        }
-        if (meterNumber.startsWith('0101') || meterNumber.startsWith('541') || meterNumber.startsWith('0125')) {
-            meterNames.push("MOJEC");
-        }
-        if (meterNumber.startsWith('04')) {
-            meterNames.push("CONLOG");
-        }
-        if (meterNumber.startsWith('0159')) {
-            meterNames.push("LONGI");
-        }
-        if (meterNumber.startsWith('0137')) {
-            meterNames.push("WELLSUN");
-        }
-        if (meterNumber.startsWith('27')) {
-            meterNames.push("GENUS");
-        }
-        if (meterNumber.startsWith('621')) {
-            meterNames.push("MOMAS");
-        }
-
-        if (meterNames.length > 0) {
-            possibleMeterNames.innerHTML = meterNames.map(function(name) {
-                return '<a href="#" class="meterName" onclick="selectMeterName(\'' + name + '\')">' + name + '</a>';
-            }).join(' ');
-            possibleNamesDiv.style.display = 'block';
-        } else {
-            possibleNamesDiv.style.display = 'none';
-        }
-    }
-
-    function selectMeterName(name) {
-        document.getElementById('meterNumber').value = name;
-        document.getElementById('possibleNames').style.display = 'none';
-    }
-</script>
 
 </body>
 </html>
