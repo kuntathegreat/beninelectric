@@ -115,11 +115,13 @@
                 b_consumption = 41.21 * consumption;
             }
 
+            var dailyCost = b_consumption;
             var weeklyCost = 7 * b_consumption;
             var monthlyCost = 30 * b_consumption;
 
             document.getElementById('result').innerHTML = "<p><strong>Electricity Consumption:</strong> " + numberWithCommas(consumption.toFixed(2)) + " Units</p>" +
                 "<p><strong>This translates to:</strong></p>" +
+                "<p><strong>Daily Cost:</strong> " + numberWithCommas(dailyCost.toFixed(2)) + " Naira</p>" +
                 "<p><strong>Weekly Cost:</strong> " + numberWithCommas(weeklyCost.toFixed(2)) + " Naira</p>" +
                 "<p><strong>Monthly Cost:</strong> " + numberWithCommas(monthlyCost.toFixed(2)) + " Naira</p>";
         }

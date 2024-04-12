@@ -49,6 +49,28 @@
         .meterName {
             margin-right: 10px;
             margin-bottom: 10px;
+            position: relative;
+            text-decoration: none;
+            color: #333;
+        }
+        .pairingCodes {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        .meterName:hover .pairingCodes {
+            display: block;
+        }
+        .pairingLabel {
+            font-weight: bold;
+            margin-bottom: 5px;
         }
     </style>
 </head>
@@ -62,7 +84,7 @@
 </div>
 
 <div id="possibleNames">
-    <strong>Meter Name:</strong><br>
+    <strong>Possible Meter Names:</strong><br>
     <div id="possibleMeterNames"></div>
 </div>
 
@@ -74,40 +96,35 @@
         var meterNames = [];
 
         if (meterNumber.startsWith('0132')) {
-            meterNames.push("ATARIS");
+            meterNames.push({ name: "ACTARIS", pairing: "" });
         }
         if (meterNumber.startsWith('0101') || meterNumber.startsWith('541') || meterNumber.startsWith('0125')) {
-            meterNames.push("MOJEC");
+            meterNames.push({ name: "MOJEC", pairing: "" });
         }
         if (meterNumber.startsWith('04')) {
-            meterNames.push("CONLOG");
+            meterNames.push({ name: "CONLOG", pairing: "#36#" + meterNumber + "#" });
         }
         if (meterNumber.startsWith('0159')) {
-            meterNames.push("LONGI");
+            meterNames.push({ name: "LONGI", pairing: "621 enter<br>" + meterNumber + " enter<br>123456 enter" });
         }
         if (meterNumber.startsWith('0137')) {
-            meterNames.push("WELLSUN");
+            meterNames.push({ name: "WELLSUN", pairing: "" });
         }
         if (meterNumber.startsWith('27')) {
-            meterNames.push("GENUS");
+            meterNames.push({ name: "GENUS", pairing: "" });
         }
         if (meterNumber.startsWith('621')) {
-            meterNames.push("MOMAS");
+            meterNames.push({ name: "MOMAS", pairing: "" });
         }
 
         if (meterNames.length > 0) {
-            possibleMeterNames.innerHTML = meterNames.map(function(name) {
-                return '<a href="#" class="meterName" onclick="selectMeterName(\'' + name + '\')">' + name + '</a>';
+            possibleMeterNames.innerHTML = meterNames.map(function(nameObj) {
+                return '<div class="meterName">' + nameObj.name + '<div class="pairingCodes"><span class="pairingLabel">To Pair:</span>' + nameObj.pairing + '</div></div>';
             }).join(' ');
             possibleNamesDiv.style.display = 'block';
         } else {
             possibleNamesDiv.style.display = 'none';
         }
-    }
-
-    function selectMeterName(name) {
-        document.getElementById('meterNumber').value = name;
-        document.getElementById('possibleNames').style.display = 'none';
     }
 </script>
 
