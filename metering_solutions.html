@@ -33,6 +33,21 @@
         button:hover {
             background-color: #45a049;
         }
+
+        .link {
+            padding: 10px 20px;
+            margin: 10px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .link:hover {
+            background-color: #45a049;
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
         #possibleNames {
             margin-top: 20px;
             padding: 20px;
@@ -80,6 +95,10 @@
     </style>
 </head>
 <body>
+<a href="index.html"  class="link">Home Page</a>
+<a href="electricity_consumption_calculator.html"  class="link">Electricity Consumption Calculator</a>
+<a href="kct_separator.html"  class="link">KCT Separator</a>
+<a href="metering_solutions.html"  class="link">Metering Solutions</a>
 
 <h1>Meter Type</h1>
 
@@ -93,6 +112,8 @@
     <div id="possibleMeterNames"></div>
 </div>
 
+
+
 <script>
     function showPossibleMeterNames() {
         var meterNumber = document.getElementById('meterNumber').value;
@@ -100,7 +121,7 @@
         var possibleNamesDiv = document.getElementById('possibleNames');
         var meterNames = [];
 
-        // Define image filenames for each mhttps://conlog.com/product/wcbu09-range/eter type
+        // Define image filenames for each meter type
         var images = {
             "ACTARIS": ["actaris1.jpg", "actaris2.jpg", "actaris3.jpg", "actaris4.jpg", "actaris5.jpg"],
             "MOJEC": ["https://pbs.twimg.com/media/D9rOTagWsAA5ZHu.jpg:large", "https://www.nairaland.com/attachments/14390852_16343327225022512649464251327171_jpegc33b21aee1e02ebc3872bd8054d67769", "https://cdn.businessday.ng/wp-content/uploads/2023/11/Meter-2.jpeg", "https://i.ytimg.com/vi/G0081jFKx7I/hqdefault.jpg", "https://blueprintafric.com/wp-content/uploads/2023/08/Prepaid-meters-750x375-1.webp"],
