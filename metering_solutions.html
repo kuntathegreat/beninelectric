@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meter Name Generator</title>
+    <title>Meter Type</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -72,11 +72,16 @@
             font-weight: bold;
             margin-bottom: 5px;
         }
+        .meterImage {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 5px;
+        }
     </style>
 </head>
 <body>
 
-<h1>Meter Name Generator</h1>
+<h1>Meter Type</h1>
 
 <div>
     <label for="meterNumber">Enter Meter Number:</label>
@@ -84,7 +89,7 @@
 </div>
 
 <div id="possibleNames">
-    <strong>Possible Meter Names:</strong><br>
+    <strong>Meter Name:</strong><br>
     <div id="possibleMeterNames"></div>
 </div>
 
@@ -95,31 +100,47 @@
         var possibleNamesDiv = document.getElementById('possibleNames');
         var meterNames = [];
 
+        // Define image filenames for each mhttps://conlog.com/product/wcbu09-range/eter type
+        var images = {
+            "ACTARIS": ["actaris1.jpg", "actaris2.jpg", "actaris3.jpg", "actaris4.jpg", "actaris5.jpg"],
+            "MOJEC": ["https://pbs.twimg.com/media/D9rOTagWsAA5ZHu.jpg:large", "https://www.nairaland.com/attachments/14390852_16343327225022512649464251327171_jpegc33b21aee1e02ebc3872bd8054d67769", "https://cdn.businessday.ng/wp-content/uploads/2023/11/Meter-2.jpeg", "https://i.ytimg.com/vi/G0081jFKx7I/hqdefault.jpg", "https://blueprintafric.com/wp-content/uploads/2023/08/Prepaid-meters-750x375-1.webp"],
+            "CONLOG": ["https://conlog.com/wp-content/uploads/2020/11/Conlog-Products-Metering-Accessories-Offer_wCBU.jpg", "https://tribuneonlineng.com/wp-content/uploads/2023/07/WhatsApp-Image-2023-07-18-at-10.22.00-AM-540x375.jpeg", "https://jknvenergy.co.za/wp-content/uploads/2022/01/BEC-44-PLC-Wired-05.jpg", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToVttKYul-9GGvKEYjJC-8hbj07s0vZZ25XLaAwmq5zg&s", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGnzIEoV2H1TRlpwDgB-rhn1J6UzzrBMNfYx8OC5MdOA&s"],
+            "LONGI": ["longi1.jpg", "longi2.jpg", "longi3.jpg", "longi4.jpg", "longi5.jpg"],
+            "WELLSUN": ["https://media.licdn.com/dms/image/C5622AQFMkp7uRYCU7g/feedshare-shrink_800/0/1677570999190?e=2147483647&v=beta&t=7OrlnkwYt8ZN3F7JbTc4ftFOvawNKBmzkQ0grgo-RJc", "https://media.licdn.com/dms/image/D5622AQEFcIw_kyaHNQ/feedshare-shrink_800/0/1695192188207?e=2147483647&v=beta&t=bXHToEPx3KzqVVFiOOc2d_jtE5q5JsgXGSn6VVFmPHI", "https://image.made-in-china.com/202f0j00YGLRUpohuPbB/Smart-Meter-GPRS-Keypad-and-Card-Prepaid-Three-Phase-Energy-Meter.webp", "https://media.licdn.com/dms/image/D5622AQEFcIw_kyaHNQ/feedshare-shrink_800/0/1695192188207?e=2147483647&v=beta&t=bXHToEPx3KzqVVFiOOc2d_jtE5q5JsgXGSn6VVFmPHI", "https://media.licdn.com/dms/image/C5622AQFMkp7uRYCU7g/feedshare-shrink_800/0/1677570999190?e=2147483647&v=beta&t=7OrlnkwYt8ZN3F7JbTc4ftFOvawNKBmzkQ0grgo-RJc"],
+            "GENUS": ["genus1.jpg", "genus2.jpg", "genus3.jpg", "genus4.jpg", "genus5.jpg"],
+            "MOMAS": ["momas1.jpg", "momas2.jpg", "momas3.jpg", "momas4.jpg", "momas5.jpg"]
+        };
+
         if (meterNumber.startsWith('0132')) {
-            meterNames.push({ name: "ACTARIS", pairing: "" });
+            meterNames.push({ name: "ACTARIS", pairing: "", images: images["ACTARIS"] });
         }
         if (meterNumber.startsWith('0101') || meterNumber.startsWith('541') || meterNumber.startsWith('0125')) {
-            meterNames.push({ name: "MOJEC", pairing: "" });
+            meterNames.push({ name: "MOJEC", pairing: "", images: images["MOJEC"] });
         }
         if (meterNumber.startsWith('04')) {
-            meterNames.push({ name: "CONLOG", pairing: "#36#" + meterNumber + "#" });
+            meterNames.push({ name: "CONLOG", pairing: "#36#" + meterNumber + "#", images: images["CONLOG"] });
         }
         if (meterNumber.startsWith('0159')) {
-            meterNames.push({ name: "LONGI", pairing: "621 enter<br>" + meterNumber + " enter<br>123456 enter" });
+            meterNames.push({ name: "LONGI", pairing: "621 enter<br>" + meterNumber + " enter<br>123456 enter", images: images["LONGI"] });
         }
         if (meterNumber.startsWith('0137')) {
-            meterNames.push({ name: "WELLSUN", pairing: "" });
+            meterNames.push({ name: "WELLSUN", pairing: "", images: images["WELLSUN"] });
         }
         if (meterNumber.startsWith('27')) {
-            meterNames.push({ name: "GENUS", pairing: "" });
+            meterNames.push({ name: "GENUS", pairing: "", images: images["GENUS"] });
         }
         if (meterNumber.startsWith('621')) {
-            meterNames.push({ name: "MOMAS", pairing: "" });
+            meterNames.push({ name: "MOMAS", pairing: "", images: images["MOMAS"] });
         }
 
         if (meterNames.length > 0) {
             possibleMeterNames.innerHTML = meterNames.map(function(nameObj) {
-                return '<div class="meterName">' + nameObj.name + '<div class="pairingCodes"><span class="pairingLabel">To Pair:</span>' + nameObj.pairing + '</div></div>';
+                return '<div class="meterName">' + nameObj.name +
+                    '<div class="pairingCodes"><span class="pairingLabel">To Pair:</span>' + nameObj.pairing + '</div>' +
+                    '<div class="meterImages">' + nameObj.images.map(function(image) {
+                        return '<img src="' + image + '" class="meterImage">';
+                    }).join('') + '</div>' +
+                    '</div>';
             }).join(' ');
             possibleNamesDiv.style.display = 'block';
         } else {
