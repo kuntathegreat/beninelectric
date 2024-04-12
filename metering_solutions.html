@@ -102,22 +102,23 @@
     </style>
 </head>
 <body>
-<a href="index.html"  class="link">Home Page</a>
-<a href="electricity_consumption_calculator.html"  class="link">Electricity Consumption Calculator</a>
-<a href="kct_separator.html"  class="link">KCT Separator</a>
-<a href="metering_solutions.html"  class="link">Metering Solutions</a>
+  <div class="links-container">
+    <a href="index.html" class="link">Home</a>
+    <a href="electricity_consumption_calculator.html" class="link">Consumption Calculator</a>
+    <a href="kct_separator.html" class="link">KCT Separator</a>
+    <a href="metering_solutions.html" class="link">Metering</a>
+  </div>
+  <h1>Meter Type</h1>
 
-<h1>Meter Type</h1>
+    <div>
+        <label for="meterNumber">Enter Meter Number:</label>
+        <input type="text" id="meterNumber" placeholder="Enter meter number" oninput="showPossibleMeterNames()">
+    </div>
 
-<div>
-    <label for="meterNumber">Enter Meter Number:</label>
-    <input type="text" id="meterNumber" placeholder="Enter meter number" oninput="showPossibleMeterNames()">
-</div>
-
-<div id="possibleNames">
-    <strong>Meter Name:</strong><br>
-    <div id="possibleMeterNames"></div>
-</div>
+    <div id="possibleNames">
+        <strong>Meter Name:</strong><br>
+        <div id="possibleMeterNames"></div>
+    </div>
 
 
 
