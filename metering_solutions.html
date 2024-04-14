@@ -33,7 +33,7 @@
         button:hover {
             background-color: #45a049;
         }
-        .links-container {
+        /*.links-container {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
@@ -54,7 +54,7 @@
         .link:hover {
             background-color: #45a049;
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
-        }
+        }*/
         #possibleNames {
             margin-top: 20px;
             padding: 20px;
@@ -99,15 +99,72 @@
             max-height: 100px;
             margin-right: 5px;
         }
-    </style>
+
+        .sidepanel {
+  height: 250px; /* Specify a height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #4CAF50; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidepanel */
+}
+
+/* The sidepanel links */
+.sidepanel a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #ccc;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidepanel a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidepanel .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* Style the button that is used to open the sidepanel */
+.openbtn {
+  font-size: 20px;
+  cursor: pointer;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  text-align: left;
+}
+
+.openbtn:hover {
+  background-color:  #45a049;
+}
+  </style>
 </head>
 <body>
-  <div class="links-container">
-    <a href="index.html" class="link">Home</a>
-    <a href="electricity_consumption_calculator.html" class="link">Consumption Calculator</a>
-    <a href="kct_separator.html" class="link">KCT Separator</a>
-    <a href="metering_solutions.html" class="link">Metering</a>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+  <div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+     <a href="electricity_consumption_calculator.html" class="link">Consumption Calculator</a>
+     <a href="kct_separator.html" class="link">KCT Separator</a>
+     <a href="metering_solutions.html" class="link">Metering</a>
   </div>
+  <button class="openbtn" onclick="openNav()">&#9776; <!-- Toggle Sidepanel --></button>
+
   <h1>Meter Type</h1>
 
     <div>
@@ -176,6 +233,17 @@
             possibleNamesDiv.style.display = 'none';
         }
     }
+
+        function openNav() {
+            document.getElementById("mySidepanel").style.width = "250px";
+        }
+
+    /* Set the width of the sidebar to 0 (hide it) */
+        function closeNav() {
+      document.getElementById("mySidepanel").style.width = "0";
+    }
+
+    </script>        
 </script>
 
 </body>
