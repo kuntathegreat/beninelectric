@@ -28,7 +28,7 @@
         th {
             background-color: #f2f2f2;
         }
-        input[type="number"] {
+        input[type="text"] {
             width: 70px;
             padding: 6px;
             box-sizing: border-box;
@@ -49,21 +49,123 @@
             background-color: #e9e9e9;
             border-radius: 5px;
         }
+
+        #possibleNames {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+        #possibleMeterNames {
+            font-weight: bold;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .meterName {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            text-decoration: none;
+            color: #333;
+        }
+        .pairingCodes {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+        }
+        .meterName:hover .pairingCodes {
+            display: block;
+        }
+        .pairingLabel {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .meterImage {
+            max-width: 100px;
+            max-height: 100px;
+            margin-right: 5px;
+        }
+
+        .sidepanel {
+            height: 250px;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #4CAF50;
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+        }
+
+        .sidepanel a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ccc;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidepanel a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidepanel .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            text-align: left;
+        }
+
+        .openbtn:hover {
+            background-color: #45a049;
+        }
     </style>
 </head>
 <body>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div id="mySidepanel" class="sidepanel">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="electricity_consumption_calculator.html" class="link">Consumption Calculator</a>
+    <a href="kct_separator.html" class="link">KCT Separator</a>
+    <a href="metering_solutions.html" class="link">Metering</a>
+    <a href="electricity_usage_calculator.html" class="link">Usage Calculator</a>
+</div>
+<button class="openbtn" onclick="openNav()">&#9776; <!-- Toggle Sidepanel --></button>
 
 <h1>Electricity Usage Calculator</h1>
 
-
 <label for="band">Select Electricity Band:</label>
-    <select id="band" name="band">
-        <option value="A">Band A</option>
-        <option value="B">Band B</option>
-        <option value="C">Band C</option>
-        <option value="D">Band D</option>
-        <option value="E">Band E</option>
-    </select>
+<select id="band" name="band">
+    <option value="A">Band A</option>
+    <option value="B">Band B</option>
+    <option value="C">Band C</option>
+    <option value="D">Band D</option>
+    <option value="E">Band E</option>
+</select>
 <form id="usageCalculator">
     <table>
         <thead>
@@ -97,9 +199,9 @@
                         <option value="1.5 hp pump">1.5 Hp Water Pump</option>
                     </select>
                 </td>
-                <td><input type="number" class="power" value="339"></td>
-                <td><input type="number" class="hours" value="4"></td>
-                <td><input type="number" class="quantity" value="1"></td>
+                <td><input type="text" class="power" value="339"></td>
+                <td><input type="text" class="hours" value="4"></td>
+                <td><input type="text" class="quantity" value="1"></td>
                 <td><button type="button" onclick="calculateUsage()">Add</button></td>
             </tr>
         </tbody>
@@ -196,8 +298,8 @@
 
         applianceRows.forEach(function(row) {
             var appliance = row.querySelector('.appliance').value;
-            var power = parseInt(row.querySelector('.power').value);
-            var hours = parseInt(row.querySelector('.hours').value);
+            var power = parseFloat(row.querySelector('.power').value); // parseFloat instead of parseInt
+            var hours = parseFloat(row.querySelector('.hours').value); // parseFloat instead of parseInt
             var quantity = parseInt(row.querySelector('.quantity').value);
 
             var usagePerDay = power * hours / 1000; // Convert to kWh
@@ -226,6 +328,14 @@
     // Function to format numbers with commas
     function numberWithCommas(x) {
         return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    function openNav() {
+        document.getElementById("mySidepanel").style.width = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidepanel").style.width = "0";
     }
 </script>
 

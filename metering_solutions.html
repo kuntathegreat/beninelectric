@@ -135,6 +135,7 @@
     <a href="electricity_consumption_calculator.html" class="link">Consumption Calculator</a>
     <a href="kct_separator.html" class="link">KCT Separator</a>
     <a href="metering_solutions.html" class="link">Metering</a>
+    <a href="electricity_usage_calculator.html" class="link">Usage Calculator</a>
 </div>
 <button class="openbtn" onclick="openNav()">&#9776; <!-- Toggle Sidepanel --></button>
 
@@ -170,7 +171,14 @@
         if (meterNumber.startsWith('0132')) {
             meterNames.push({ 
                 name: "ACTARIS", 
-                description: "<h3>Consumption in kW: 09 &#8629 <br>Meter Number: 19 or 100 &#8629 <br>Tariff:05 &#8629<br>SGC: 50 &#8629 <br>Trip: 01 &#8629 <br>Pair: 17777777 17777777 &#8629</h3>", 
+                description: [
+                    ["Description:", "Consumption in kW: 09"],
+                    ["", "Meter Number: 19 or 100"],
+                    ["", "Tariff:05"],
+                    ["", "SGC: 50"],
+                    ["", "Trip: 01"],
+                    ["", "Pair: 17777777 17777777"]
+                ], 
                 pairing: "", 
                 images: images["ACTARIS"] 
             });
@@ -178,7 +186,17 @@
         if (meterNumber.startsWith('0101') || meterNumber.startsWith('541') || meterNumber.startsWith('0125')) {
             meterNames.push({ 
                 name: "MOJEC", 
-                description: "<h3>Consumption in kW: 09 &#8629 or 02 &#8629 or 05 &#8629; <br>Meter Number: 65 &#8629; or 10 &#8629; <br>Tariff: (541...) 36 &#8629 or 82 &#8629 <br>(0101...) 12 &#8629 <br>SGC: 70 &#8629 or 11 &#8629 <br>Trip: 00 &#8629 <br>Pair: <br> for 541 meters: 1593570 + The Meter Number &#8629<br> for 0101 meters (0101 4567 8901 2): 5254 000X<br> 5258 45678901 &#8629<br>       that is 5258 followed by the 5th number to the 12th number", 
+                description: [
+                    ["Description:", "Consumption in kW: 09 or 02 or 05"],
+                    ["", "Meter Number: 65 or 10"],
+                    ["", "Tariff: (541...) 36 or 82"],
+                    ["", "(0101...) 12"],
+                    ["", "SGC: 70 or 11"],
+                    ["", "Trip: 00"],
+                    ["", "Pair: for 541 meters: 1593570 + The Meter Number"],
+                    ["", "for 0101 meters (0101 4567 8901 2): 5254 000X"],
+                    ["", "5258 45678901 that is 5258 followed by the 5th number to the 12th number"]
+                ], 
                 pairing: "", 
                 images: images["MOJEC"] 
             });
@@ -186,22 +204,45 @@
         if (meterNumber.startsWith('04')) {
             meterNames.push({  
                 name: "CONLOG", 
-                description: "<h3>Consumption in kW: #1# <br>Consumption in A: #071# <br>Meter Number: #4# or #100# <br>Tariff: #006# or #003# <br>SGC: #030# or #10# <br>Trip: #000# <br>Pair: #36#meternumber#</h3>", pairing: "#36#" + meterNumber + "#", 
+                description: [
+                    ["Description:", "Consumption in kW: #1#"],
+                    ["", "Consumption in A: #071#"],
+                    ["", "Meter Number: #4# or #100#"],
+                    ["", "Tariff: #006# or #003#"],
+                    ["", "SGC: #030# or #10#"],
+                    ["", "Trip: #000#"],
+                    ["", "Pair: #36#meternumber#"]
+                ], 
+                pairing: "#36#" + meterNumber + "#", 
                 images: images["CONLOG"] 
             });
         }
         if (meterNumber.startsWith('0159')) {
             meterNames.push({ 
                 name: "LONGI", 
-                description: "<h3>Consumption in kW: <br>Meter Number: <br>Tariff:  <br>SGC:  <br>Trip: #000# <br>Pair: 620 &#8629<br> METER NUMBER&#8629<br> 123456 &#8629<br></h3>", 
-                pairing: "620 enter<br>" + meterNumber + " enter<br>123456 enter", 
+                description: [
+                    ["Description:", "Consumption in kW:"],
+                    ["", "Meter Number:"],
+                    ["", "Tariff:"],
+                    ["", "SGC:"],
+                    ["", "Trip: #000#"],
+                    ["", "Pair: 620"]
+                ], 
+                pairing: "620 enter " + meterNumber + " enter 123456 enter", 
                 images: images["LONGI"] 
             });
         }
         if (meterNumber.startsWith('0137')) {
             meterNames.push({ 
                 name: "WELLSUN", 
-                description: "<h3>Consumption in kW: <br>Meter Number: 101 &#8629 <br>Tariff: 117 &#8629 <br>SGC: 116 &#8629 <br>Trip: 000 &#8629 <br>Pair: 070471 &#8629<br> METER NUMBER&#8629<br></h3>", 
+                description: [
+                    ["Description:", "Consumption in kW:"],
+                    ["", "Meter Number: 101"],
+                    ["", "Tariff: 117"],
+                    ["", "SGC: 116"],
+                    ["", "Trip: 000"],
+                    ["", "Pair: 070471 METER NUMBER"]
+                ], 
                 pairing: "", 
                 images: images["WELLSUN"] 
             });
@@ -209,7 +250,14 @@
         if (meterNumber.startsWith('27')) {
             meterNames.push({ 
                 name: "GENUS", 
-                description: "<h3>Consumption in kW: <br>Meter Number: #100#  <br>Tariff: #006# <br>SGC: #030# <br>Trip: 000 &#8629 <br>Pair: #METERNUMBER#<br> DEPAIR CODE: #7514 2220# </h3>", 
+                description: [
+                    ["Description:", "Consumption in kW:"],
+                    ["", "Meter Number: #100#"],
+                    ["", "Tariff: #006#"],
+                    ["", "SGC: #030#"],
+                    ["", "Trip: 000"],
+                    ["", "Pair: #METERNUMBER# DEPAIR CODE: #7514 2220#"]
+                ], 
                 pairing: "", 
                 images: images["GENUS"] 
             });
@@ -217,7 +265,9 @@
         if (meterNumber.startsWith('621')) {
             meterNames.push({ 
                 name: "MOMAS", 
-                description: "MOMAS meters are known for their user-friendly interface and comprehensive data reporting. They are suitable for both residential and commercial applications.", 
+                description: [
+                    ["Description:", "MOMAS meters are known for their user-friendly interface and comprehensive data reporting. They are suitable for both residential and commercial applications."]
+                ], 
                 pairing: "", 
                 images: images["MOMAS"] 
             });
@@ -225,9 +275,12 @@
 
         if (meterNames.length > 0) {
             possibleMeterNames.innerHTML = meterNames.map(function(nameObj) {
+                var tableRows = nameObj.description.map(function(row) {
+                    return "<tr><td>" + row.join("</td><td>") + "</td></tr>";
+                }).join("");
                 return '<div class="meterName">' + 
                     '<h2>' + nameObj.name + '</h2>' + // Display meter name as heading
-                    '<p>' + nameObj.description + '</p>' + // Display meter description
+                    '<table>' + tableRows + '</table>' + // Display meter description as table
                     '<div class="pairingCodes"><span class="pairingLabel">To Pair:</span>' + nameObj.pairing + '</div>' +
                     '<div class="meterImages">' + nameObj.images.map(function(image) {
                         return '<img src="' + image + '" class="meterImage">';
