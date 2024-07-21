@@ -125,6 +125,21 @@
         .openbtn:hover {
             background-color: #45a049;
         }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        th:first-child, td:first-child {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -136,6 +151,7 @@
     <a href="kct_separator.html" class="link">KCT Separator</a>
     <a href="metering_solutions.html" class="link">Metering</a>
     <a href="electricity_usage_calculator.html" class="link">Usage Calculator</a>
+    <a href="units_calculator.html" class="link">Units Calculator</a>
 </div>
 <button class="openbtn" onclick="openNav()">&#9776; <!-- Toggle Sidepanel --></button>
 
@@ -174,7 +190,7 @@
                 description: [
                     ["Description:", "Consumption in kW: 09"],
                     ["", "Meter Number: 19 or 100"],
-                    ["", "Tariff:05"],
+                    ["", "Tariff: 05"],
                     ["", "SGC: 50"],
                     ["", "Trip: 01"],
                     ["", "Pair: 17777777 17777777"]
@@ -189,13 +205,13 @@
                 description: [
                     ["Description:", "Consumption in kW: 09 or 02 or 05"],
                     ["", "Meter Number: 65 or 10"],
-                    ["", "Tariff: (541...) 36 or 82"],
-                    ["", "(0101...) 12"],
+                    ["", "Tariff: (541...) 36 for single phase or 82 for three-phase"],
+                    ["", "(0101...) 12 or 13"],
                     ["", "SGC: 70 or 11"],
                     ["", "Trip: 00"],
                     ["", "Pair: for 541 meters: 1593570 + The Meter Number"],
                     ["", "for 0101 meters (0101 4567 8901 2): 5254 000X"],
-                    ["", "5258 45678901 that is 5258 followed by the 5th number to the 12th number"]
+                    ["", "5258 45678901 that is, 5258 followed by the 5th number to the 12th number"]
                 ], 
                 pairing: "", 
                 images: images["MOJEC"] 
@@ -211,7 +227,7 @@
                     ["", "Tariff: #006# or #003#"],
                     ["", "SGC: #030# or #10#"],
                     ["", "Trip: #000#"],
-                    ["", "Pair: #36#meternumber#"]
+                    ["", "Pair: # 36 # meternumber #"]
                 ], 
                 pairing: "#36#" + meterNumber + "#", 
                 images: images["CONLOG"] 

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Usage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 6px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            padding: 20px;
+            background-color: #e9e9e9;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .sidepanel {
+            height: 250px;
+            width: 0;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #4CAF50;
+            overflow-x: hidden;
+            padding-top: 60px;
+            transition: 0.5s;
+        }
+
+        .sidepanel a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 25px;
+            color: #ccc;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .sidepanel a:hover {
+            color: #f1f1f1;
+        }
+
+        .sidepanel .closebtn {
+            position: absolute;
+            top: 0;
+            right: 25px;
+            font-size: 36px;
+            margin-left: 50px;
+        }
+
+        .openbtn {
+            font-size: 20px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            text-align: left;
+        }
+
+        .openbtn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div id="mySidepanel" class="sidepanel">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="electricity_consumption_calculator.html" class="link">Consumption Calculator</a>
+        <a href="kct_separator.html" class="link">KCT Separator</a>
+        <a href="metering_solutions.html" class="link">Metering</a>
+        <a href="electricity_usage_calculator.html" class="link">Usage Calculator</a>
+        <a href="units_calculator.html" class="link">Units Calculator</a>
+
+    </div>
+    <button class="openbtn" onclick="openNav()">&#9776; <!-- Toggle Sidepanel --></button>
+
+    <h2>Prepaid Units Converter</h2>
+
+    <label for="band">Select Tariff Band:</label>
+    <select id="band">
+        <option value="209">Band A (209 Naira)</option>
+        <option value="65">Band B (65 Naira)</option>
+        <option value="56.91">Band C (56.91 Naira)</option>
+        <option value="41.20">Band D (41.20 Naira)</option>
+        <option value="41.21">Band E (41.21 Naira)</option>
+    </select>
+
+    <div class="input-group">
+        <label for="amount">Amount (Naira):</label>
+        <input type="number" id="amount" placeholder="Enter amount in Naira">
+    </div>
+    <div class="input-group">
+        <label for="units">Units:</label>
+        <input type="number" id="units" placeholder="Enter units">
+    </div>
+    <button onclick="convertToUnits()">Convert to Units</button>
+    <button onclick="convertToNaira()">Convert to Naira</button>
+    <div class="result" id="result"></div>
+
+    <script>
+        const vatRate = 0.0697675;
+
+        function getTariff() {
+            const band = document.getElementById('band').value;
+            return parseFloat(band);
+        }
+
+        function convertToUnits() {
+            const amount = parseFloat(document.getElementById('amount').value);
+            const tariff = getTariff();
+            if (isNaN(amount) || amount <= 0) {
+                alert('Please enter a valid amount');
+                return;
+            }
+            const vat = amount * vatRate;
+            const unitAmount = amount - vat;
+            const units = unitAmount / tariff;
+            document.getElementById('result').innerText = `Units: ${units.toFixed(2)}`;
+        }
+
+        function convertToNaira() {
+            const units = parseFloat(document.getElementById('units').value);
+            const tariff = getTariff();
+            if (isNaN(units) || units <= 0) {
+                alert('Please enter a valid number of units');
+                return;
+            }
+            const unitAmount = units * tariff;
+            const amount = unitAmount / (1 - vatRate);
+            document.getElementById('result').innerText = `Amount (Naira): ${amount.toFixed(2)}`;
+        }
+
+        function openNav() {
+            document.getElementById("mySidepanel").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidepanel").style.width = "0";
+        }
+    </script>
+</body>
+</html>
