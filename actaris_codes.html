@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOJEC Meter Codes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <h1>ACTARIS (0132XXXXXXX)</h1>
+            <tr>
+                <th>Code Type</th>
+                <th>Description</th>
+                <th>Code</th>
+            </tr>
+            <tr>
+                <td>Consumption in kW or A</td>
+                <td>Identifies instantaneous consumption</td>
+                <td>09 ENTER</td>
+            </tr>
+            <tr>
+                <td>Meter Number</td>
+                <td>Code used to check the meter number</td>
+                <td>19 OR 100 ENTER</td>
+            </tr>
+            <tr>
+                <td>Tariff</td>
+                <td>checks tariff index</td>
+                <td> 05 ENTER</td>
+            </tr>
+            <tr>
+                <td>SGC</td>
+                <td>Special Grid Code for meter calibration</td>
+                <td>50 ENTER</td>
+            </tr>
+            <tr>
+                <td>Tripping Code</td>
+                <td>Conducts a tripping test</td>
+                <td>01 ENTER</td>
+            </tr>
+            <tr>
+                <td>PAIR</td>
+                <td>Pairs UIU to meter</td>
+                <td></td>
+            </tr>
+                <td>KRN</td>
+                <td>checks the KRN</td>
+                <td>04 ENTER</td>
+            </tr>
